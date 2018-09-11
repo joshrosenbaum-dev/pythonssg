@@ -1,15 +1,15 @@
 import os
 import shutil
 
-srcpath = os.getcwd() + "/src"
-tmppath = os.getcwd() + "/tmp"
+wwwpath = os.getcwd() + "/www"
+tmppath = os.getcwd() + "/www_tmp"
 
 if os.path.exists(tmppath):
-    shutil.rmtree(tmppath) # removes tmp if it exists already for backup
+    shutil.rmtree(tmppath)
 
-elif os.path.exists(srcpath):
-    shutil.copytree(srcpath, tmppath) # copies the original folder
-    shutil.rmtree(tmppath) # deletes the tmp folder
-    os.rename(tmppath, srcpath) # renames tmp to src for viewing
+if os.path.exists(wwwpath):
+    shutil.copytree(wwwpath, tmppath)
+    shutil.rmtree(wwwpath)
+    os.rename(tmppath, wwwpath)
 else:
-    os.mkdir(srcpath)
+    os.mkdir(wwwpath)
