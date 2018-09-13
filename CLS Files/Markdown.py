@@ -1,6 +1,7 @@
 import os
 import markdown
 
+#Converts Input Markdown File Into HTML File of Same Name (A.md > A.html)
 def md2html(filename):
 	"Takes a mardown file and converts it to html"
 
