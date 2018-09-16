@@ -23,7 +23,7 @@ class Server(BaseHTTPRequestHandler):
 def preview_site(path):
     os.chdir(path)
     httpd = HTTPServer(('localhost', 8080), Server)
-    webbrowser.open('localhost:8080', new=0, autoraise=True)
+    # webbrowser.open('localhost:8080', new=0, autoraise=True)
     httpd.serve_forever()
 
     # previewSite("/home/beanz/cs370/folder/")
