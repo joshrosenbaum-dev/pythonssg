@@ -45,6 +45,9 @@ else:
     os.mkdir(wwwpath)
     print("Web directory created!")
     md2html()
+    
+www_redirect = open(wwwpath + "/" + "index.html", "w")
+www_redirect.write("<html><head><meta http-equiv='refresh' content='0; url=http://localhost:8080/home'></head></html>")
 
 print("[SUCCESS] Launching web server on localhost:8080")
 localserv.preview_site(wwwpath)
