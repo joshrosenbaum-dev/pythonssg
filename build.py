@@ -25,12 +25,12 @@ if not os.path.exists(srcpath):
     os.mkdir(srcpath)
     print("There was no source directory to work with. Please place Markdown (.md) files into the folder named '/src'.")
     exit()
-
+    
 if os.path.exists(bkppath):
     print("Deleting past backups...")
     shutil.rmtree(bkppath)
     print("Done!")
-
+    
 if os.path.exists(wwwpath):
     print("Creating backup...")
     shutil.copytree(wwwpath, bkppath)
@@ -46,9 +46,5 @@ else:
     print("Web directory created!")
     md2html()
     
-www_redirect = open(wwwpath + "/" + "index.html", "w")
-www_redirect.write("""<html><head><meta http-equiv='refresh' content='0; url=http://localhost:8080/home'></head></html>""")
-www_redirect.close()
-
 print("[SUCCESS] Launching web server on localhost:8080")
-localserv.preview_site(wwwpath)
+localserv.preview_site(wwwpath + "/home") 
