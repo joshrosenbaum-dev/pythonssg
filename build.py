@@ -47,4 +47,4 @@ else:
     md2html()
 
 print("[SUCCESS] Launching web server on localhost:8080")
-localserv.preview_site(wwwpath + "/home")
+localserv.preview_site(wwwpath)
