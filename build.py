@@ -1,8 +1,18 @@
 import os
-import shutil
-import markdown
-import localserv
+#import shutil
+#import markdown
+#import localserv
 
+def newproj():
+    projname = input("What would you like to name your new project? ")
+    projdir = os.path.join(os.getcwd(), projname)
+    if not os.path.exists(projdir):
+        print("Initializing new project directory in " + projdir)
+        os.makedirs(projdir + "/src")
+    else:
+        print("This project already exists.")
+
+'''
 srcpath = os.getcwd() + "/src/"
 wwwpath = os.getcwd() + "/www"
 bkppath = os.getcwd() + "/www_bkp"
@@ -48,3 +58,4 @@ else:
     
 print("[SUCCESS] Launching web server on localhost:8080")
 localserv.preview_site(wwwpath + "/home") 
+'''
