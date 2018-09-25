@@ -1,6 +1,7 @@
 #PSSG.py - CLI driver for Pumpkin Spice Static Site Generator
 
 import argparse
+import build
 
 def main():
     parser = argparse.ArgumentParser(description="PSSG CLI")
@@ -16,10 +17,9 @@ def main():
 
     #basic calls based on arguments run 'python PSSG.py -h' for usage
     if args.new:
-        print("creating new file")
-        #TODO: call project setup function
+        build.newproj()
     elif args.build:
-        print("building project")
+        print("Building site from project source files")
         #TODO: call build function
         if args.serve:
             print("starting preview server")
