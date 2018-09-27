@@ -1,11 +1,9 @@
 # Simple Website Creation
-# 9/27/18
-# Author:   Josh Rosenbaum
+# Author:   Josh Rosenbaum, 09/27/2018
 #
 # Concept:  To generate the website package for the user to upload freely.
 #           Module invoked by command line with argument:
 #           `-b or --build projectNameHere`
-#
 
 
 import os
