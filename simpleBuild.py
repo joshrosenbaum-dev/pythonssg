@@ -6,6 +6,7 @@
 
 import os
 import shutil
+import md2html
 
 def build(projPath):
     pkgPath = os.path.join(projPath, projPath + "_www")
@@ -22,6 +23,7 @@ def build(projPath):
         os.makedirs(pkgPath)
         print("[OK] Initialized project website package")  # pkgPath created on first run
         #TODO: md2html goes here
+        md2html.mdConvert(projPath, newPath)
         print("[OK] Build finished!")
     else:
         print("[OK] Package already exists. Regenerating project website package")
@@ -30,6 +32,7 @@ def build(projPath):
         tmpFile.write("<h1>Hello, Starbucks.</h1><p>Temporary</p>")
         tmpFile.close()  # file is place in newPath to show a change in file structure vs. empty test case
         # TODO: md2html goes here, above lines removed
+        md2html.mdConvert(projPath, newPath)
         os.renames(pkgPath, tmpPath)  # _www is renamed to _tmp
         os.renames(newPath, pkgPath)  # _new is renamed to _www
         shutil.rmtree(tmpPath)  # delete _tmp
