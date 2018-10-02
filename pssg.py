@@ -1,6 +1,7 @@
 #PSSG.py - CLI driver for Pumpkin Spice Static Site Generator
 
 import argparse
+import os
 import simpleBuild
 
 def main():
@@ -18,10 +19,11 @@ def main():
     #basic calls based on arguments run 'python PSSG.py -h' for usage
     if args.new:
         print("Making new project: "+args.filename)
-        #TODO: call simpleBuild new project function
+        #TODO: call new project function
     elif args.build:
-        print("Building site from project source files")
-        #TODO: call build function
+        projName = args.filename
+        projPath = os.path.join(os.getcwd(), "Projects", projName)
+        simpleBuild.build(projPath)
         if args.serve:
             print("starting preview server")
             #TODO: call server function
