@@ -19,18 +19,19 @@ def main():
 
     # basic calls based on arguments run 'python PSSG.py -h' for usage
     if args.newfile:
-        if not os.path.exists(args.newfile):
-            print("Making new project: " + args.newfile)
-            os.mkdir(args.newfile)
+        if not os.path.exists(os.path.join(os.getcwd(), "Projects", args.newfile)):
+            print("[OK] Making new project titled " + args.newfile + ".")
+            os.mkdir(os.path.join(os.getcwd(), "Projects", args.newfile))
+            print("[OK] Project folder generated.")
         else:
-            print("This Directory already exists")
+            print("[ERROR] This project already exists!")
 
     elif args.buildfile:
         projName = args.buildfile
         projPath = os.path.join(os.getcwd(), "Projects", projName)
         simpleBuild.build(projPath)
         if args.serve:
-            print("starting preview server")
+            print("[OK] Starting preview server...")
             # TODO: call server function
     else:
          parser.print_help()

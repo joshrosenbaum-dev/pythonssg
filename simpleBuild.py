@@ -18,15 +18,15 @@ def build(projPath):
         print("[ERROR] The project you specified doesn't exist!")
         exit(0)
     else:
-        print("[OK] Found project directory")
+        print("[OK] Found project directory.")
     if not os.path.exists(pkgPath):
 
         os.makedirs(pkgPath)
-        print("[OK] Initialized project website package")  # pkgPath created on first run
+        print("[OK] Initialized project website package.")  # pkgPath created on first run
         md2html.mdConvert(projPath, pkgPath)
         print("[OK] Build finished!")
     else:
-        print("[OK] Package already exists. Regenerating project website package")
+        print("[OK] Package already exists. Regenerating project website package.")
         os.makedirs(newPath)  # newPath created because pkgPath already exists
         md2html.mdConvert(projPath, newPath)
         os.renames(pkgPath, tmpPath)  # _www is renamed to _tmp
