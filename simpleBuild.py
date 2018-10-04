@@ -7,6 +7,7 @@
 import os
 import shutil
 import md2html
+import hashing
 
 def build(projPath):
     pkgPath = os.path.join(projPath, projPath + "_www")
@@ -24,11 +25,13 @@ def build(projPath):
         os.makedirs(pkgPath)
         print("[OK] Initialized project website package.")  # pkgPath created on first run
         md2html.mdConvert(projPath, pkgPath)
+        hashing.rhash(pkgPath)
         print("[OK] Build finished!")
     else:
         print("[OK] Package already exists. Regenerating project website package.")
         os.makedirs(newPath)  # newPath created because pkgPath already exists
         md2html.mdConvert(projPath, newPath)
+        hashing.rhash(newPath)
         os.renames(pkgPath, tmpPath)  # _www is renamed to _tmp
         os.renames(newPath, pkgPath)  # _new is renamed to _www
         shutil.rmtree(tmpPath)  # delete _tmp
