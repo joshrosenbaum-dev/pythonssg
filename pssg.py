@@ -3,6 +3,7 @@
 import argparse
 import os
 import simpleBuild
+import localserv
 
 
 def main():
@@ -31,8 +32,8 @@ def main():
         projPath = os.path.join(os.getcwd(), "Projects", projName)
         simpleBuild.build(projPath)
         if args.serve:
-            print("[OK] Starting preview server...")
-            # TODO: call server function
+            print("starting preview server")
+            localserv.serve(args.buildfile)
     else:
          parser.print_help()
 
