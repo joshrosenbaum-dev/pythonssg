@@ -10,9 +10,10 @@ import md2html
 import hashing
 
 def build(projPath):
-    pkgPath = os.path.join(projPath, projPath + "_www")
-    newPath = os.path.join(projPath, projPath + "_new")
-    tmpPath = os.path.join(projPath, projPath + "_tmp")
+    srcPath = os.path.join(projPath, "src")
+    pkgPath = os.path.join(projPath, "www")
+    newPath = os.path.join(projPath, "new")
+    tmpPath = os.path.join(projPath, projPath + "tmp")
 
     print("Building website...")
     if not os.path.exists(projPath):
@@ -21,16 +22,15 @@ def build(projPath):
     else:
         print("[OK] Found project directory.")
     if not os.path.exists(pkgPath):
-
         os.makedirs(pkgPath)
         print("[OK] Initialized project website package.")  # pkgPath created on first run
-        md2html.mdConvert(projPath, pkgPath)
+        md2html.mdConvert(srcPath, pkgPath)
         hashing.rhash(pkgPath)
         print("[OK] Build finished!")
     else:
         print("[OK] Package already exists. Regenerating project website package.")
         os.makedirs(newPath)  # newPath created because pkgPath already exists
-        md2html.mdConvert(projPath, newPath)
+        md2html.mdConvert(srcPath, newPath)
         hashing.rhash(newPath)
         os.renames(pkgPath, tmpPath)  # _www is renamed to _tmp
         os.renames(newPath, pkgPath)  # _new is renamed to _www

@@ -21,7 +21,7 @@ def main():
     if args.newfile:
         if not os.path.exists(os.path.join(os.getcwd(), "Projects", args.newfile)):
             print("[OK] Making new project titled " + args.newfile + ".")
-            os.mkdir(os.path.join(os.getcwd(), "Projects", args.newfile))
+            os.makedirs(os.path.join(os.getcwd(), "Projects", args.newfile, "src"))
             print("[OK] Project folder generated.")
         else:
             print("[ERROR] This project already exists!")
