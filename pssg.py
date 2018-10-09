@@ -23,6 +23,11 @@ def main():
         if not os.path.exists(os.path.join(os.getcwd(), "Projects", args.newfile)):
             print("[OK] Making new project titled " + args.newfile + ".")
             os.makedirs(os.path.join(os.getcwd(), "Projects", args.newfile, "src"))
+
+            tmpFile = open(os.path.join("Projects/" + args.newfile + "/"+"src/", "masterindex.md"), "w+")
+            tmpFile.write('''meta http-equiv="refresh" content="0; URL='http://localhost:8080/home/'" />''')
+            tmpFile.close()
+
             print("[OK] Project folder generated.")
         else:
             print("[ERROR] This project already exists!")
