@@ -11,9 +11,11 @@ def main():
 
     # Arguments go here cmd group is mutually exclusive
     cmd = parser.add_mutually_exclusive_group()
-    cmd.add_argument('-n', '--new', help="new project", action='store', dest='newfile')
+    cmd.add_argument('-n', '--new', help="create new project", action='store', dest='newfile')
+    cmd.add_argument('-S', '--startserver', help="start preview server at project path", action='store', dest='project')
+    parser.add_argument('-s', '--serve', help="start preview server after building", action='store_true')
     cmd.add_argument('-b', '--build', help="build project", action='store', dest='buildfile')
-    parser.add_argument('-s', '--serve', help="start preview server", action='store_true')
+
     # parser.add_argument('-f', '-filename', help="name of project folder", action='store', dest='filename')
 
     args = parser.parse_args()
@@ -37,8 +39,14 @@ def main():
         projPath = os.path.join(os.getcwd(), "Projects", projName)
         simpleBuild.build(projPath)
         if args.serve:
-            print("starting preview server")
+            print("[OK] Starting Preview Server")
             localserv.serve(args.buildfile)
+    elif args.project:
+        if os.path.exists(os.path.join(os.getcwd(), "Projects", args.project)):
+            print("[OK] Starting Preview Server")
+            localserv.serve(args.project)
+        else:
+            print("[ERROR] Project cannot be found!")
     else:
          parser.print_help()
 

@@ -7,7 +7,7 @@ def serve(path):
     serv = subprocess.Popen(["python3", "-m", "http.server", "8080", "--bind", "127.0.0.1"])
 
     while 1:
-        x = input("press q to exit")
+        x = input("press q to exit\n")
         if x == 'q':
             break
 
