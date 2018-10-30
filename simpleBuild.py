@@ -21,6 +21,12 @@ def build(projPath):
         exit(0)
     else:
         print("[OK] Found project directory.")
+        print("[OK] Deleting old temporary files.")
+        if os.path.exists(newPath):
+            shutil.rmtree(newPath)
+        if os.path.exists(tmpPath):
+            shutil.rmtree(tmpPath)
+
     if not os.path.exists(pkgPath):
         os.makedirs(pkgPath)
         print("[OK] Initialized project website package.")  # pkgPath created on first run
