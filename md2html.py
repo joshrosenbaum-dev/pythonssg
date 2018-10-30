@@ -3,7 +3,8 @@ import os
 import shutil
 
 def mdConvert(src, www):
-
+        CRED = '\033[91m'
+        CEND = '\033[0m'
         for filename in os.listdir(src):
             try:
                 if filename.endswith(".md") and filename != "masterindex.md":
@@ -24,5 +25,5 @@ def mdConvert(src, www):
                 else:
                     continue
             except:
-                print("[ERROR] " +filename + " is not a valid markdown file, Fix and rebuild")
+                print(CRED +"[ERROR] " +filename + " is not a valid markdown file, Fix and rebuild"+ CEND)
                 continue
